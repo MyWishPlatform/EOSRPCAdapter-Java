@@ -2,6 +2,7 @@ package io.topiacoin.eosrpcadapter.messages;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.Collections;
 import java.util.List;
 
 public class BlockInfo {
@@ -59,11 +60,18 @@ public class BlockInfo {
 
     public static class TransactionInfo {
         public String id;
-        public List<String> signatures;
+        public List<String> signatures = Collections.emptyList();
         public String compression;
         public String packed_context_free_data;
-        public List<String> context_free_data;
+        public List<String> context_free_data = Collections.emptyList();
         public String packed_trx;
         public Transaction transaction;
+
+        public TransactionInfo() {
+        }
+
+        public TransactionInfo(String packed_trx) {
+            this.packed_trx = packed_trx;
+        }
     }
 }
